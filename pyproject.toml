@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 dependencies = [
-  "fastapi>=0.128.2,<1", "starlette>=0.50,<1", "pydantic>=2.13.4,<3",
+  "fastapi>=0.128.2,<1", "starlette>=0.50,<2", "pydantic>=2.13.4,<3",
   "uvicorn>=0.48,<1", "argon2-cffi>=25.1,<26", "cryptography>=46.0.4,<48",
   "python-multipart>=0.0.29,<1", "Pillow>=12.3,<13", "reportlab>=4.4.9,<5"
 ]
