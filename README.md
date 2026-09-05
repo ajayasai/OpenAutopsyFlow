@@ -8,7 +8,7 @@ Version **0.1.0** · Apache-2.0 · Self-hosted · Pre-production
 
 Public source repository: **[ajayasai/OpenAutopsyFlow](https://github.com/ajayasai/OpenAutopsyFlow)**.
 
-This GitHub edition contains the runnable application, tests, deployment configuration and documentation. Generated screenshots, the sample PDF and the static OpenAPI snapshot are not committed; the browser harness regenerates synthetic previews, and authenticated `/api/schema` exposes the running API schema. The original full source ZIP also contains the generated previews.
+This GitHub edition contains the runnable application, tests, deployment configuration and documentation. Generated screenshots, the sample PDF and the static OpenAPI snapshot are not committed; the browser harness regenerates synthetic previews, and authenticated `/api/schema` exposes the running API schema. The original full source ZIP also contains the generated previews. **Use the GitHub runtime lock for current installs:** the original ZIP predates the dependency-security update discovered during hosted CI.
 
 ## What is implemented
 
@@ -28,7 +28,7 @@ This GitHub edition contains the runnable application, tests, deployment configu
 
 ## Run a synthetic demonstration
 
-Python 3.13 is the locally tested interpreter. Python 3.11–3.13 are the intended CI targets, not all locally validated platforms.
+Python 3.13 is the locally tested interpreter. GitHub Actions tests Python 3.11, 3.12 and 3.13; consult the [hosted workflow results](https://github.com/ajayasai/OpenAutopsyFlow/actions) for the current revision.
 
 ```bash
 git clone https://github.com/ajayasai/OpenAutopsyFlow.git
@@ -75,7 +75,7 @@ python scripts/browser_smoke.py
 python scripts/benchmark.py --cases 1000 --repeats 30
 ```
 
-See [recorded validation](docs/VALIDATION.md), [benchmark data](docs/benchmark-results.json), the authenticated `/api/schema` endpoint, [architecture](docs/ARCHITECTURE.md) and [workflow acceptance tests](docs/WORKFLOW.md). The browser harness does not substitute for staging tests of TLS, browser cookie delivery or CSP enforcement. GitHub Actions configuration is included; a hosted run has not been observed for this release.
+See [recorded validation](docs/VALIDATION.md), [benchmark data](docs/benchmark-results.json), the authenticated `/api/schema` endpoint, [architecture](docs/ARCHITECTURE.md) and [workflow acceptance tests](docs/WORKFLOW.md). The browser harness does not substitute for staging tests of TLS, browser cookie delivery or CSP enforcement. The first hosted run passed all three Python test jobs but exposed vulnerable dependency pins. The runtime lock and package requirements were updated to patched releases, without suppressing audit findings. The same test matrix and dependency audit run on the updated source; consult [GitHub Actions](https://github.com/ajayasai/OpenAutopsyFlow/actions) for the latest result. Historical local coverage and browser results in `docs/VALIDATION.md` describe the original dependency environment, not a claim that the updated packages were retested locally.
 
 ## Repository and source integrity
 
