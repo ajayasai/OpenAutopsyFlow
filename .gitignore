@@ -1,0 +1,36 @@
+# Runtime case material and secrets
+/data/
+/artifacts/
+/backup/
+/backups/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.key
+*.pem
+*.oafbackup
+.demo-key
+*credentials*.txt
+*passwords*.txt
+*.log
+# Development outputs
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+coverage.json
+junit.xml
+*.egg-info/
+build/
+dist/
+node_modules/
+.DS_Store
