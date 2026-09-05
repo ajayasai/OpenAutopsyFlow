@@ -49,8 +49,8 @@
       "sha256": "86a188987fd9b5f5bcf000a3ac3e2b2ac3fa088bc7e49ff0e0dba98952d8a013"
     },
     "README.md": {
-      "bytes": 10122,
-      "sha256": "bb92ccd03c7b1c0c983bb1524f47efd02dc80ba7fe3426c208b7062ac3aaa84d"
+      "bytes": 10802,
+      "sha256": "41c6ad7bf20d506a99d004f758c07775a11af2fa23f1c7f4f7f550359840c687"
     },
     "SECURITY.md": {
       "bytes": 3437,
@@ -161,16 +161,16 @@
       "sha256": "51fee8a2fd33e44630da88d764bed5006b244252557b97572526c257e448956b"
     },
     "pyproject.toml": {
-      "bytes": 1051,
-      "sha256": "4092e398e4248d510227b832f49d6577698c0aa4412c7ea7b8e4f6cab6dbf602"
+      "bytes": 1050,
+      "sha256": "9e0c9acebd8bf665dc65a30b55fad11c62a68122a34b42f4ff4fcccbc4b10abd"
     },
     "requirements-dev.lock": {
       "bytes": 228,
       "sha256": "8db0df29e0aa370879a00e76582ce941f5d396b7d9191f416b7897347bc8185f"
     },
     "requirements.lock": {
-      "bytes": 564,
-      "sha256": "5bc5a4c56ac77da649ff7d5df9d237db26cc761456fc65ca611ad16075eb97e4"
+      "bytes": 578,
+      "sha256": "37de3b3af02920bda20974921347b1eaef495e341667377a009bde0e996e919d"
     },
     "scripts/benchmark.py": {
       "bytes": 3855,
