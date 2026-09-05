@@ -1,0 +1,222 @@
+{
+  "files": {
+    ".dockerignore": {
+      "bytes": 159,
+      "sha256": "ad2b284b937e363fab92199f97e2bbadfd9ad743eba041639e25abbcc8100e61"
+    },
+    ".env.example": {
+      "bytes": 461,
+      "sha256": "7b221c99239d706c89b02bd168c208c6fb11a1ecab145b3c8b6cc7ffadc75e78"
+    },
+    ".github/ISSUE_TEMPLATE/bug_report.md": {
+      "bytes": 476,
+      "sha256": "d61cf06f1ac462e1777862c014c93b0d231190212e9130079dcac7cc80437d80"
+    },
+    ".github/dependabot.yml": {
+      "bytes": 193,
+      "sha256": "efe35b04741cc513b7fecc935d603508aff876b23c82979b0a3300f299c3ea37"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 981,
+      "sha256": "6ecc30133e3e5738a04f3d91f69b3c8e5f630182ec2048a8c94449a07e8394e6"
+    },
+    ".gitignore": {
+      "bytes": 395,
+      "sha256": "dec2001eea2e5e536e3d68a869f8c8bcf9928801ce2e8cee9363d99568c1036b"
+    },
+    "AGENTS.md": {
+      "bytes": 1401,
+      "sha256": "0084431b32262a1412756bdfac4947b1525a007cefd89f1364a2892b6a9c1dfe"
+    },
+    "CHANGELOG.md": {
+      "bytes": 782,
+      "sha256": "57923a6af979f6e8ac16c3ce20e614af98e110809c689bc54dcfac694c1dc3cf"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 1695,
+      "sha256": "38eee449c550ee5bc7d308f2b3753dfd0402f2275676b78f8a2c67d387f81662"
+    },
+    "Dockerfile": {
+      "bytes": 830,
+      "sha256": "96d30a64090e07da80455d0cb7dbe93c1cfde6babdf50f30b68733acb4cde7dc"
+    },
+    "LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "NOTICE": {
+      "bytes": 534,
+      "sha256": "86a188987fd9b5f5bcf000a3ac3e2b2ac3fa088bc7e49ff0e0dba98952d8a013"
+    },
+    "README.md": {
+      "bytes": 10122,
+      "sha256": "bb92ccd03c7b1c0c983bb1524f47efd02dc80ba7fe3426c208b7062ac3aaa84d"
+    },
+    "SECURITY.md": {
+      "bytes": 3437,
+      "sha256": "5db2c3a6cc0459caca31d48a71f235d0c9e2656280734c2d79f759e9afa93ece"
+    },
+    "compose.yaml": {
+      "bytes": 582,
+      "sha256": "cb276a9cc78960e7f0531656eae8d088b6bf85844c8177f19d42053d60dab8c3"
+    },
+    "docs/ARCHITECTURE.md": {
+      "bytes": 4880,
+      "sha256": "44fdab8e413788543441b7f922cc3e905514659339bd80ed86887ad05bdd3a4a"
+    },
+    "docs/COMPARISON.md": {
+      "bytes": 3243,
+      "sha256": "ffc7756d69459c67b380df452d1ddd15769cb164fb7b7dd7b1ea907b188575be"
+    },
+    "docs/DEPLOYMENT.md": {
+      "bytes": 5424,
+      "sha256": "a8c14c3fec90d977f99ac122438ebf6e961a29f6897ffadfc7098688f5bd092e"
+    },
+    "docs/PORTABILITY.md": {
+      "bytes": 3788,
+      "sha256": "dfa317260439a1308ee4fde9efcc76bcb6f76969c98d39d8413127c33427b0b5"
+    },
+    "docs/PUBLISHING.md": {
+      "bytes": 2651,
+      "sha256": "c95317af13e5c4df7c2254718b30cd773e19d5078f8d45eec9b65dbf6c5ed11c"
+    },
+    "docs/ROADMAP.md": {
+      "bytes": 2453,
+      "sha256": "e16099c3b0b211a706337b31a63b81da68fa70cf45f9e984a94d559985cb113f"
+    },
+    "docs/THREAT_MODEL.md": {
+      "bytes": 3567,
+      "sha256": "dc88a3f540eed79f4c136c1eb47358c13b5cf12301f894eba2fd1180ac186124"
+    },
+    "docs/VALIDATION.md": {
+      "bytes": 5067,
+      "sha256": "a9baab8c68c9ac6845102879b063c0b24e68832db2da43d3eddd14d6f64f35b6"
+    },
+    "docs/WORKFLOW.md": {
+      "bytes": 3509,
+      "sha256": "5c2ec10235b4b4b6ac0d0b36bf20ae50f90e68565be6495ee47551802aeb4278"
+    },
+    "docs/benchmark-results.json": {
+      "bytes": 810,
+      "sha256": "b1575a57528afb83b2cb42d3c4e67e5f2b461a1849f9f9c7d4648f17f56fb0f0"
+    },
+    "docs/screenshots/browser-results.json": {
+      "bytes": 1280,
+      "sha256": "8bb88e4998b5511b9b5ee6ca38824d2fd7fc768757f9d6f1690c833ba6e874ab"
+    },
+    "docs/test-results.json": {
+      "bytes": 1764,
+      "sha256": "5a846fc50ac17ab8668f579846bebeb945d93d4cd6a6b4887df34f16588f4881"
+    },
+    "openautopsyflow/__init__.py": {
+      "bytes": 100,
+      "sha256": "08ccedb3cdd3011cece18cd23ab26e8d31f8db93951b9d2c830db3f6e590c16e"
+    },
+    "openautopsyflow/api.py": {
+      "bytes": 25283,
+      "sha256": "ecd829542bc1b92abddc4e7f36e0dd004aac310f74879ad0dbebdabff18a20af"
+    },
+    "openautopsyflow/cli.py": {
+      "bytes": 14202,
+      "sha256": "81e2e7bb296a0ccf9ba478b46488e6374a92423399a0d3ab7e05dc436def4f84"
+    },
+    "openautopsyflow/documents.py": {
+      "bytes": 7709,
+      "sha256": "beded530f44ca2fbc74d450fe0f85a0b32b05a7d2cb4e7a0872bfdc0f68d9125"
+    },
+    "openautopsyflow/rules.py": {
+      "bytes": 3602,
+      "sha256": "afa9fcc2e986a1c842750231ad4845a84e55d859a1d869bd1c660736d399901b"
+    },
+    "openautopsyflow/schema.sql": {
+      "bytes": 7147,
+      "sha256": "12c1a8b97494ddefaa3a1c230af1087243d142f1774c1b48ef2d92c1eab57fab"
+    },
+    "openautopsyflow/schemas.py": {
+      "bytes": 5520,
+      "sha256": "905e74af34e29f80ae023d26e54e69a78c8c0b4b17eebb90ad8dd0ebd8848a25"
+    },
+    "openautopsyflow/security.py": {
+      "bytes": 8554,
+      "sha256": "6ddd185f507d09c2de98be5602a8ceae24bdd6d65d1816c39167c329ff15d9cb"
+    },
+    "openautopsyflow/service.py": {
+      "bytes": 26358,
+      "sha256": "f0e148904f6e76c8e57ca4c53f6886930201a043c6d33f0b018dcb8f967f4c74"
+    },
+    "openautopsyflow/static/app.css": {
+      "bytes": 12861,
+      "sha256": "4032c8ea8ee140af8a4e0df51f6e0204a1e6b818cfa85870ffaa34d48c6e3aac"
+    },
+    "openautopsyflow/static/app.js": {
+      "bytes": 43486,
+      "sha256": "0bafd73a956c51403a7b81e9c8e14bd855cde2238e263b24e63db8e31efd22d6"
+    },
+    "openautopsyflow/static/index.html": {
+      "bytes": 632,
+      "sha256": "de671c9c258686eab6ac997662d33e235456c428a65162c46ff69af48a01bed6"
+    },
+    "openautopsyflow/store.py": {
+      "bytes": 7317,
+      "sha256": "51fee8a2fd33e44630da88d764bed5006b244252557b97572526c257e448956b"
+    },
+    "pyproject.toml": {
+      "bytes": 1051,
+      "sha256": "4092e398e4248d510227b832f49d6577698c0aa4412c7ea7b8e4f6cab6dbf602"
+    },
+    "requirements-dev.lock": {
+      "bytes": 228,
+      "sha256": "8db0df29e0aa370879a00e76582ce941f5d396b7d9191f416b7897347bc8185f"
+    },
+    "requirements.lock": {
+      "bytes": 564,
+      "sha256": "5bc5a4c56ac77da649ff7d5df9d237db26cc761456fc65ca611ad16075eb97e4"
+    },
+    "scripts/benchmark.py": {
+      "bytes": 3855,
+      "sha256": "0095d5df9027d94bbfb8e8af75d3bbfccfc6db12d7dbb4285cfc00478052ea29"
+    },
+    "scripts/browser_smoke.py": {
+      "bytes": 10961,
+      "sha256": "91a481e44304bb2532b1e5dcd5bf5bd3c1012829c15e943d94533d5fda5d9314"
+    },
+    "scripts/publish_github.py": {
+      "bytes": 7084,
+      "sha256": "3067ece4f0e949167ec3fa8d51ca3d4db1b1d55c28cbd2bb13637651b560a05b"
+    },
+    "scripts/release_manifest.py": {
+      "bytes": 1596,
+      "sha256": "380ac522437837ff600e71d44db680207728897968ba390393b959499cb04d33"
+    },
+    "scripts/run_demo.py": {
+      "bytes": 1315,
+      "sha256": "742f5e81c4cd35cb4abd7947556cbbb471c17d1f717e1d2ebe7dcc67fd6c1514"
+    },
+    "tests/conftest.py": {
+      "bytes": 4932,
+      "sha256": "9d8af3354a1e64d3e8d982de7eed12473e82f45b32877f042d060ca08e545a9b"
+    },
+    "tests/test_evidence_exports.py": {
+      "bytes": 13217,
+      "sha256": "c280edaa4ff31739bf1685ef62008549986f98c2cdbb4306ada82751ee859ce4"
+    },
+    "tests/test_operations.py": {
+      "bytes": 8333,
+      "sha256": "80d217f90e368fae539632de963f1884e4b49c14afbec51a481a5394c32a879a"
+    },
+    "tests/test_publish_safety.py": {
+      "bytes": 2453,
+      "sha256": "b93fe1b9ae80e70f62ba0cc695080af8374f55bdec7f88d5449054e05d9aadc8"
+    },
+    "tests/test_security.py": {
+      "bytes": 8524,
+      "sha256": "74aa3c00ccaf1a5eb68611ae0655909331062bba15cca1917bb380a7d772ea2a"
+    },
+    "tests/test_workflow.py": {
+      "bytes": 15666,
+      "sha256": "85592d9bac80e3727d3768209db16db9312b96c3136aef015e978b45669965e1"
+    }
+  },
+  "format": "openautopsyflow-source-v1",
+  "version": "0.1.0"
+}
