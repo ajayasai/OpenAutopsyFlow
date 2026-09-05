@@ -1,0 +1,46 @@
+{
+  "release": "0.1.0",
+  "date": "2026-09-05",
+  "python": "3.13.5",
+  "pytest": {
+    "tests": 116,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "time": 14.304
+  },
+  "coverage": {
+    "scope": "Python application package, including CLI; not frontend or helper scripts",
+    "covered_lines": 1295,
+    "num_statements": 1455,
+    "percent_covered": 85.19893899204244,
+    "percent_covered_display": "85",
+    "missing_lines": 160,
+    "excluded_lines": 0,
+    "percent_statements_covered": 89.00343642611683,
+    "percent_statements_covered_display": "89",
+    "num_branches": 430,
+    "num_partial_branches": 71,
+    "covered_branches": 311,
+    "missing_branches": 119,
+    "percent_branches_covered": 72.32558139534883,
+    "percent_branches_covered_display": "72"
+  },
+  "offline_browser_checks_passed": 15,
+  "offline_browser_javascript_errors": [],
+  "loopback_http_launcher_smoke": "passed: generated-account login, case list, static routes, security header presence",
+  "editable_install": "passed, with existing local dependencies and no build isolation",
+  "pdf_visual_inspection": "2-page synthetic issued report rendered and visually inspected; no clipping/overlap observed",
+  "not_run": [
+    "Hosted GitHub Actions",
+    "Real ClamAV scanner",
+    "Current dependency vulnerability audit",
+    "Docker build",
+    "Windows/macOS and Python 3.11/3.12 runtime validation",
+    "Live browser network/TLS/cookie/CSP validation",
+    "Independent penetration test",
+    "Clinical/departmental validation",
+    "Commercial head-to-head comparison"
+  ],
+  "github_publication": "At original build: not performed. Subsequently published to public ajayasai/OpenAutopsyFlow through the existing-repository connector; see docs/PUBLISHING.md."
+}
