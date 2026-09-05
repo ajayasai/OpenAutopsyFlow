@@ -1,0 +1,32 @@
+name: Source and workflow tests
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install -r requirements.lock -r requirements-dev.lock
+      - run: python -m pip install --no-deps -e .
+      - run: python -m coverage run -m pytest
+      - run: python -m coverage report --fail-under=80
+      - run: node --check openautopsyflow/static/app.js
+      - run: python scripts/publish_github.py --dry-run
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install pip-audit
+      - run: python -m pip_audit -r requirements.lock
