@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openautopsyflow"
+version = "0.1.0"
+description = "Evidence-linked autopsy casework and human-reviewed report workflows"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+  "fastapi>=0.128.2,<1", "starlette>=0.50,<1", "pydantic>=2.13.4,<3",
+  "uvicorn>=0.48,<1", "argon2-cffi>=25.1,<26", "cryptography>=46.0.4,<48",
+  "python-multipart>=0.0.29,<1", "Pillow>=12.3,<13", "reportlab>=4.4.9,<5"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9,<10", "httpx>=0.28,<1", "coverage>=7,<8", "ruff>=0.12,<1", "pip-audit>=2,<3"]
+
+ui = ["playwright>=1.57,<2"]
+
+[project.scripts]
+openautopsyflow = "openautopsyflow.cli:main"
+
+[tool.setuptools.package-data]
+openautopsyflow = ["static/*", "schema.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["openautopsyflow"]
+branch = true
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E9", "F821", "F822", "F823"]
