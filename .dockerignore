@@ -1,0 +1,10 @@
+*
+!pyproject.toml
+!requirements.lock
+!README.md
+!LICENSE
+!NOTICE
+!openautopsyflow/
+!openautopsyflow/**
+openautopsyflow/**/__pycache__
+openautopsyflow/**/*.pyc
