@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from fastapi.testclient import TestClient
 from PIL import Image
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 from openautopsyflow.api import create_app
 from openautopsyflow.cli import seed_demo
 from openautopsyflow import schemas as S, service as V
@@ -163,14 +163,14 @@ def run(output: Path, mode='live', chromium=None):
                 checks.append('Approval disabled while required review receipts are missing')
                 page.locator('#wb-from').select_option(str(before))
                 page.locator('[data-wb="compare"]').click()
-                page.wait_for_function('document.querySelector("#wb-comparison").textContent.includes("SYNTHETIC WORKBENCH REVISION")')
+                expect(page.locator('#wb-comparison')).to_contain_text('SYNTHETIC WORKBENCH REVISION', timeout=15000)
                 checks.append('Preserved revisions compare exact before/after narrative')
                 evidence_ids = page.locator('[data-evidence]').evaluate_all('(nodes)=>nodes.map(x=>x.dataset.evidence)')
                 first = page.locator(f'[data-evidence="{evidence_ids[0]}"]')
                 first.locator('textarea').fill('Synthetic human attestation attempted before original opening.')
                 first.locator('input[type=checkbox]').check()
                 first.get_by_role('button', name='Record evidence review').click()
-                page.wait_for_function('document.querySelector("#wb-error").textContent.includes("Open the original")')
+                expect(page.locator('#wb-error')).to_contain_text('Open the original', timeout=15000)
                 checks.append('Server rejects a receipt before this reviewer opens the original')
                 for eid in evidence_ids:
                     article = page.locator(f'[data-evidence="{eid}"]')
@@ -178,13 +178,13 @@ def run(output: Path, mode='live', chromium=None):
                     page.wait_for_selector('#preview-' + eid + ' .wb-preview')
                     if article.locator('img').count():
                         article.locator('img').wait_for(state='visible')
-                        page.wait_for_function('(id)=>document.querySelector("#preview-"+id+" img").naturalWidth===32', arg=eid)
+                        expect(article.locator('img')).to_have_js_property('naturalWidth', 32, timeout=15000)
                         checks.append('Same-origin original image preview works under delivered CSP')
                     assert page.evaluate('typeof window.xss_should_not_run') == 'undefined'
                     article.locator('textarea').fill('Synthetic reviewer: I inspected this exact original against the report.')
                     article.locator('input[type=checkbox]').check()
                     article.get_by_role('button', name='Record evidence review').click()
-                    page.wait_for_function('(id)=>document.querySelector("[data-evidence=\\\""+id+"\\\"] .wb-badge").textContent==="Attested"', arg=eid)
+                    expect(article.locator('.wb-badge')).to_have_text('Attested', timeout=15000)
                 checks.append('All required originals explicitly attested through visible forms')
                 checks.append('Evidence text is rendered inertly; embedded script text does not execute')
                 assert page.locator('[data-wb="approve"]').is_enabled()
@@ -199,7 +199,7 @@ def run(output: Path, mode='live', chromium=None):
                 page.locator('[data-wb="approve"]').click()
                 page.wait_for_selector('[data-wb="issue"]')
                 page.locator('[data-wb="issue"]').click()
-                page.wait_for_function('W.data.report.status==="issued"')
+                expect(page.locator('#wb-report > .wb-card').first.locator('.wb-badge').first).to_have_text('issued', timeout=15000)
                 assert page.locator('[data-wb="issue"]').count() == 0
                 assert page.locator('.wb-attest').count() == 0
                 checks.append('Independent approval and issuance preserve receipts and freeze editing')

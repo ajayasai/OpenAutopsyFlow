@@ -17,8 +17,8 @@
       "sha256": "efe35b04741cc513b7fecc935d603508aff876b23c82979b0a3300f299c3ea37"
     },
     ".github/workflows/ci.yml": {
-      "bytes": 2318,
-      "sha256": "f8cf95de0918e6de4660e149998b0ad52627a29d622c518fc5812102103f5353"
+      "bytes": 2353,
+      "sha256": "6ab74c292274e6d9483bc901f8af7f96de490eb8c194ceb7c7904bd280e13c69"
     },
     ".gitignore": {
       "bytes": 395,
@@ -233,8 +233,8 @@
       "sha256": "742f5e81c4cd35cb4abd7947556cbbb471c17d1f717e1d2ebe7dcc67fd6c1514"
     },
     "scripts/workbench_smoke.py": {
-      "bytes": 15441,
-      "sha256": "f87541c157588bebca8ef6f9a8dc21aad434c5f81cb3ab5fd63aae3d2c2da7bf"
+      "bytes": 15397,
+      "sha256": "a4a9ccd7dcd19f4f04f23dbcd7b69e04424d4db6dd212e909171e66c4d6ac81c"
     },
     "tests/conftest.py": {
       "bytes": 4932,
