@@ -6,6 +6,7 @@ Only synthetic example artifacts belong under docs/screenshots.
 """
 import hashlib
 import json
+import tomllib
 from pathlib import Path
 from publish_github import ROOT, ROOT_FILES, SOURCE_DIRS, BINARY_DOCS, source_files
 
@@ -30,7 +31,7 @@ def build(root: Path):
         data=path.read_bytes()
         files[name]={'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
     (root/'SOURCE_MANIFEST.json').write_text(json.dumps({'format':'openautopsyflow-source-v1',
-        'version':'0.1.0','files':files},indent=2,sort_keys=True)+'\n')
+        'version':tomllib.loads((root/'pyproject.toml').read_text())['project']['version'],'files':files},indent=2,sort_keys=True)+'\n')
     source_files(root)
     print(f'Validated manifest with {len(files)} files plus the manifest itself.')
 

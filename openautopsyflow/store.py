@@ -93,16 +93,11 @@ class Store:
         settings.data_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.path = settings.data_dir / 'casework.sqlite3'
         with closing(self.connect()) as db:
-            db.execute('PRAGMA journal_mode=WAL')
-            db.executescript(Path(__file__).with_name('schema.sql').read_text())
-            if db.execute("SELECT value FROM meta WHERE key='schema_version'").fetchone()[0] != '1':
-                raise ValueError('Unsupported schema version; migrate before startup')
+            from .migrations import initialize
             marker = digest(HKDF(algorithm=hashes.SHA256(), length=32, salt=None,
                                 info=b'oaf/key-check/v1').derive(settings.key))
-            old = db.execute("SELECT value FROM meta WHERE key='key_check'").fetchone()
-            if old and old[0] != marker:
-                raise ValueError('Wrong master key for this database; refusing startup')
-            db.execute("INSERT OR IGNORE INTO meta VALUES ('key_check',?)", (marker,))
+            initialize(db, marker, Path(__file__).with_name('schema.sql').read_text())
+            db.execute('PRAGMA journal_mode=WAL')
         os.chmod(self.path, 0o600)
         signing_seed = HKDF(algorithm=hashes.SHA256(), length=32, salt=None,
                             info=b'oaf/bundle-signing/v1').derive(settings.key)

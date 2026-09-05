@@ -359,10 +359,11 @@ def edit_report(db, report, user, payload):
         fail('Sections must preserve the selected template keys, titles and order', 422)
     db.execute("UPDATE reports SET sections=?,version=version+1,last_editor=?,acknowledgements='{}' WHERE id=?",
                (canonical(sections), user['id'], report['id']))
-    audit(db, report['case_id'], user['id'], 'report.edited', report['id'], {'sections_hash': digest(sections)})
+    audit(db, report['case_id'], user['id'], 'report.edited', report['id'], {'sections_hash': digest(sections), 'report_version': report['version']+1})
 
 
 def transition(db, store, report, user, action, payload):
+    from .review import enforce_review
     case_id, ident = report['case_id'], report['id']
     role = access(db, case_id, user)
     version_check(report, payload.version)
@@ -376,7 +377,7 @@ def transition(db, store, report, user, action, payload):
         fresh = snapshot(db, case_id)
         old = report['snapshot']
         diff = {'old_revision': report['source_revision'], 'new_revision': c['revision'],
-                'old_snapshot_hash': digest(old), 'new_snapshot_hash': digest(fresh)}
+                'old_snapshot_hash': digest(old), 'new_snapshot_hash': digest(fresh), 'report_version': report['version']+1}
         db.execute("UPDATE reports SET snapshot=?,source_revision=?,version=version+1,"
                    "acknowledgements='{}',last_editor=? WHERE id=?",
                    (canonical(fresh), c['revision'], user['id'], ident))
@@ -387,7 +388,7 @@ def transition(db, store, report, user, action, payload):
             fail('Only examiner/reviewer can return an unissued reviewed report to draft', 403)
         db.execute("UPDATE reports SET status='draft',reviewer=NULL,approved_digest=NULL,approved_at=NULL,"
                    "acknowledgements='{}',version=version+1 WHERE id=?", (ident,))
-        audit(db, case_id, user['id'], 'report.returned_to_draft', ident)
+        audit(db, case_id, user['id'], 'report.returned_to_draft', ident, {'report_version': report['version']+1})
         return {}
     result = checks(db, report)
     blockers = [i for i in result['issues'] if i['severity'] == 'blocker']
@@ -414,6 +415,7 @@ def transition(db, store, report, user, action, payload):
             fail('Resolve outstanding blocking reviewer comments first')
         if any(i['id'] not in report['acknowledgements'] for i in result['issues'] if i['severity'] == 'warning'):
             fail('Review prompts changed; return to draft and re-acknowledge')
+        enforce_review(db, report, user['id'])
         db.execute("UPDATE reports SET status='approved',reviewer=?,approved_at=?,approved_digest=?,version=version+1 WHERE id=?",
                    (user['id'], now(), report_digest(report), ident))
     elif action == 'issue':
@@ -425,6 +427,7 @@ def transition(db, store, report, user, action, payload):
             fail('Approved content digest changed; issue refused')
         if db.execute('SELECT COUNT(*) FROM comments WHERE report_id=? AND blocking=1 AND resolved_at IS NULL', (ident,)).fetchone()[0]:
             fail('A blocking comment is unresolved')
+        enforce_review(db, report, report['reviewer'])
         report.update(status='issued', issued_at=now(), issued_by=user['id'])
         pdf = render_pdf(report, store.settings)
         encrypted = store.seal(pdf, f'report:{case_id}:{ident}')
@@ -433,7 +436,7 @@ def transition(db, store, report, user, action, payload):
     else:
         fail('Unknown report action', 404)
     audit(db, case_id, user['id'], 'report.' + action, ident,
-          {'from_status': status, 'source_revision': report['source_revision']})
+          {'from_status': status, 'source_revision': report['source_revision'], 'report_version': report['version']+1})
     return {}
 
 
@@ -469,6 +472,14 @@ def export_case(db, store, case_id, user, include_evidence):
         'SELECT m.user_id,m.role,u.name,u.username,u.active FROM members m JOIN users u ON m.user_id=u.id '
         'WHERE m.case_id=? ORDER BY m.user_id', (case_id,))]
     append('assignments.json', canonical(assignments).encode())
+    revisions = [{**dict(h), 'data': json.loads(h['data'])} for h in db.execute(
+        'SELECT h.* FROM report_history h JOIN reports r ON r.id=h.report_id '
+        'WHERE r.case_id=? ORDER BY h.report_id,h.version', (case_id,))]
+    append('report-history.json', canonical(revisions).encode())
+    receipts = [dict(x) for x in db.execute(
+        'SELECT x.* FROM review_receipts x JOIN reports r ON r.id=x.report_id '
+        'WHERE r.case_id=? ORDER BY x.created_at,x.id', (case_id,))]
+    append('review-receipts.json', canonical(receipts).encode())
     for row in db.execute('SELECT * FROM reports WHERE case_id=? ORDER BY number', (case_id,)):
         report = report_row(db, row['id'])
         append(f"reports/{report['id']}.json", canonical(report_public(report)).encode())

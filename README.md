@@ -2,13 +2,21 @@
 
 **Evidence-linked autopsy casework, with human-controlled report review.**
 
-Version **0.1.0** · Apache-2.0 · Self-hosted · Pre-production
+Version **0.2.0** · Apache-2.0 · Self-hosted · Pre-production
 
 > This is a working initial release, not a validated clinical/medicolegal system. Use synthetic data until independent security review, departmental workflow validation and operational acceptance are complete. No claim of superiority over every commercial product is supported by the current evidence.
 
 Public source repository: **[ajayasai/OpenAutopsyFlow](https://github.com/ajayasai/OpenAutopsyFlow)**.
 
 This GitHub edition contains the runnable application, tests, deployment configuration and documentation. Generated screenshots, the sample PDF and the static OpenAPI snapshot are not committed; the browser harness regenerates synthetic previews, and authenticated `/api/schema` exposes the running API schema. The original full source ZIP also contains the generated previews. **Use the GitHub runtime lock for current installs:** the original ZIP predates the dependency-security update discovered during hosted CI.
+
+## New in 0.2: a review that can be retraced
+
+Open **[the review workbench](docs/REVIEW_WORKBENCH.md)** through the link above the main application. It adds full preserved draft revisions, exact narrative/source comparisons, reviewer-specific original-evidence receipts and independently retainable signed audit checkpoints. Approval requires the assigned independent reviewer to open and explicitly attest to the required originals for that exact report review round. Reassignment, disablement, changed sources and resubmission cannot silently reuse an obsolete review.
+
+The additive schema-v2 migration authenticates the existing store before DDL, checks migration integrity on restart and rolls back atomically on failure. Existing issued reports stay unchanged; existing reports contribute only their currently stored legacy baseline, not invented earlier drafts. **Back up before upgrading.** Previously approved unissued reports with required evidence need a new review round.
+
+See [0.2 validation](docs/VALIDATION_0_2.md), [workbench and upgrade guide](docs/REVIEW_WORKBENCH.md), and [competitive evaluation protocol](docs/COMPETITIVE_VALIDATION.md). These are tested improvements over OpenAutopsyFlow 0.1, not proof of universal superiority over commercial systems.
 
 ## What is implemented
 
@@ -44,7 +52,7 @@ python scripts/run_demo.py
 
 Open `http://127.0.0.1:8000`. On first startup, the launcher prints **randomly generated** passwords for `examiner`, `reviewer`, `coordinator` and `auditor`. There are no fixed runtime passwords. Existing demo data is never reseeded or overwritten. Stop with Ctrl+C. The dedicated demo directory is `artifacts/demo-data`, excluded from publishing.
 
-For the first synthetic case, open **Reports**. A deliberately missing **Injury 4** demonstrates a structural prompt. Add that injury as an examiner, explicitly refresh the report snapshot, reconcile the narrative, acknowledge remaining review prompts, and submit. Sign in as `reviewer` to review, approve and issue. The third synthetic case already awaits review.
+For the first synthetic case, open **Reports**. A deliberately missing **Injury 4** demonstrates a structural prompt. Add that injury as an examiner, explicitly refresh the report snapshot, reconcile the narrative, acknowledge remaining review prompts, and submit. Sign in as `reviewer`, open the review workbench, open each required original and record its review receipt before approval and issuance. The third synthetic case already awaits review.
 
 **Demo mode disables malware scanning and permits non-HTTPS cookies. It must never hold real case material.** An installed Python environment can run the application without external AI services or CDNs. Installation and dependency updating normally need network access.
 
@@ -63,13 +71,19 @@ Issued report rows and original PDFs cannot be changed through the application. 
 ```bash
 python -m pip install -r requirements-dev.lock
 python -m coverage run -m pytest
-python -m coverage report --fail-under=80
+python -m coverage report --fail-under=85
 node --check openautopsyflow/static/app.js
+node --check openautopsyflow/static/workbench.js
 
 # Optional offline browser harness (Chromium DOM + real in-process API)
 python -m pip install '.[ui]'
 python -m playwright install chromium
 python scripts/browser_smoke.py
+
+# Review workbench: default uses a real local HTTPS test server
+python scripts/workbench_smoke.py --mode live
+# Explicit fallback for browser-network-restricted environments (NOT HTTPS validation)
+python scripts/workbench_smoke.py --mode offline
 
 # Sequential synthetic benchmark, not a vendor comparison
 python scripts/benchmark.py --cases 1000 --repeats 30
@@ -95,7 +109,7 @@ Read [SECURITY.md](SECURITY.md), the [threat model](docs/THREAT_MODEL.md), [depl
 
 Evidence, issued PDFs and whole backups are encrypted. **Case metadata, narratives and other structured fields remain plaintext in SQLite.** Protected encrypted disks, access-controlled backups, HTTPS, careful account provisioning and separate key custody are deployment requirements, not features supplied automatically by this package. An application bundle signature is not a clinician’s qualified electronic signature. A local audit chain cannot independently establish an event’s time, identity or legal admissibility.
 
-This release is intentionally a single-node SQLite application. Export generation is bounded at 128 MiB of uncompressed members; the verifier permits at most 256 MiB. Uploaded originals are limited to 12 MiB each. There is no automatic retention/deletion policy, database migration framework or historical key rotation facility yet. Malware scanner integration is fail-closed outside demo mode, but real ClamAV operation has not been exercised in the local validation environment.
+This release is intentionally a single-node SQLite application. Export generation is bounded at 128 MiB of uncompressed members; the verifier permits at most 256 MiB. Uploaded originals are limited to 12 MiB each. There is no automatic retention/deletion policy or historical key rotation facility yet. Schema upgrades now use an additive, checksummed migration framework; no automatic downgrade is provided. Malware scanner integration is fail-closed outside demo mode, but real ClamAV operation has not been exercised in the local validation environment.
 
 ## Relationship to existing products
 

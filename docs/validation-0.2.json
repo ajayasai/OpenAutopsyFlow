@@ -1,0 +1,110 @@
+{
+  "version": "0.2.0",
+  "date": "2026-09-05",
+  "scope": "Observed local synthetic tests; hosted CI is recorded separately in GitHub Actions.",
+  "environment": {
+    "python": "3.13.5",
+    "fastapi": "0.128.2",
+    "starlette": "0.50.0",
+    "cryptography": "46.0.4",
+    "pydantic": "2.13.4",
+    "pytest": "9.0.2",
+    "playwright": "1.57.0"
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "165",
+    "time": "27.315",
+    "timestamp": "2026-09-05T13:14:34.057801+00:00",
+    "hostname": "localhost"
+  },
+  "coverage": {
+    "covered_lines": 1626,
+    "num_statements": 1802,
+    "percent_covered": 86.80851063829788,
+    "percent_covered_display": "87",
+    "missing_lines": 176,
+    "excluded_lines": 0,
+    "percent_statements_covered": 90.2330743618202,
+    "percent_statements_covered_display": "90",
+    "num_branches": 548,
+    "num_partial_branches": 82,
+    "covered_branches": 414,
+    "missing_branches": 134,
+    "percent_branches_covered": 75.54744525547446,
+    "percent_branches_covered_display": "76"
+  },
+  "workbench_browser": {
+    "mode": "offline",
+    "checks_passed": 10,
+    "checks": [
+      "Approval disabled while required review receipts are missing",
+      "Preserved revisions compare exact before/after narrative",
+      "Server rejects a receipt before this reviewer opens the original",
+      "All required originals explicitly attested through visible forms",
+      "Evidence text is rendered inertly; embedded script text does not execute",
+      "390-pixel layout has no document-level horizontal overflow",
+      "1440-pixel layout has no document-level horizontal overflow",
+      "Independent approval and issuance preserve receipts and freeze editing",
+      "Repeated issued-PDF download preserves exact bytes",
+      "Zero JavaScript runtime errors"
+    ],
+    "javascript_errors": [],
+    "test_data": "Synthetic only; credentials and test TLS keys were temporary and are not exported.",
+    "limitations": [
+      "Offline ASGI bridge; no browser network, TLS, cookie transport, or delivered CSP validation."
+    ]
+  },
+  "legacy_browser": {
+    "mode": "offline Chromium + in-process ASGI; not live-network browser E2E",
+    "checks_passed": 16,
+    "checks": [
+      "Login and assigned-case dashboard",
+      "Intake history dialog",
+      "Missing injury reference displayed",
+      "Unsaved narrative cannot be submitted",
+      "Draft save persists typed narrative",
+      "Structured injury form saves through real API",
+      "Source mutation visibly makes draft stale",
+      "Refresh resolves reference without overwriting opinion",
+      "Warning acknowledgements and submission",
+      "Reviewer view does not allow narrative editing",
+      "Blocking reviewer comment prevents approval",
+      "Required original reviews recorded through authenticated API",
+      "Resolve, independent approval and immutable issue",
+      "Preserved issued PDF retrieved from application",
+      "390-pixel mobile layout has no document overflow",
+      "Desktop layout and JavaScript runtime checks"
+    ],
+    "javascript_errors": [],
+    "api_requests": 41,
+    "expected_negative_responses": [
+      {
+        "method": "GET",
+        "url": "/api/me",
+        "status": 401
+      },
+      {
+        "method": "POST",
+        "url": "/api/reports/2e419bd5-000c-4209-abe6-54e19389bdc8/actions/approve",
+        "status": 409
+      }
+    ],
+    "not_tested": [
+      "TLS/reverse proxy",
+      "browser cookie transport",
+      "real browser CSP enforcement"
+    ]
+  },
+  "hosted_checks": "Added Python 3.11-3.13, runtime audit, real HTTPS browser, non-root Docker smoke jobs; consult the current commit run.",
+  "not_validated": [
+    "Clinical/departmental acceptance",
+    "Independent penetration test",
+    "Commercial head-to-head superiority",
+    "Enterprise identity/HA/integrations",
+    "Public-PKI certificate trust and production reverse proxy"
+  ]
+}

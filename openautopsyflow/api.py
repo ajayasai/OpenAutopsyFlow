@@ -444,4 +444,6 @@ def create_app(settings: Settings | None = None):
     def home():
         return FileResponse(static/'index.html')
     app.mount('/static',StaticFiles(directory=static),name='static')
+    from .review_api import router as review_router
+    app.include_router(review_router(store))
     return app
