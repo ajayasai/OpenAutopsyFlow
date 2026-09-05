@@ -1,5 +1,5 @@
-# Exact runtime versions used by the local Python 3.13.5 validation.
-# This is not a dependency vulnerability clearance. Re-audit before deployment.
+# Runtime pins updated after the initial hosted dependency audit on 2026-09-05.
+# Validate through GitHub Actions; a passing audit is not a security certification.
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.13.0
@@ -7,18 +7,18 @@ argon2-cffi==25.1.0
 argon2-cffi-bindings==25.1.0
 cffi==2.0.0
 charset-normalizer==3.4.7
-click==8.1.8
-cryptography==46.0.4
-fastapi==0.128.2
+click==8.3.3
+cryptography==50.0.1
+fastapi==0.141.1
 h11==0.16.0
 idna==3.17
 pillow==12.3.0
 pycparser==3.0
 pydantic==2.13.4
 pydantic_core==2.46.4
-python-multipart==0.0.29
+python-multipart==0.0.32
 reportlab==4.4.9
-starlette==0.50.0
+starlette==1.6.0
 typing-inspection==0.4.2
 typing_extensions==4.16.0
 uvicorn==0.48.0
