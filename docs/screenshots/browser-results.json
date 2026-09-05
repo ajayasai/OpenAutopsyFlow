@@ -1,0 +1,40 @@
+{
+  "mode": "offline Chromium + in-process ASGI; not live-network browser E2E",
+  "checks_passed": 15,
+  "checks": [
+    "Login and assigned-case dashboard",
+    "Intake history dialog",
+    "Missing injury reference displayed",
+    "Unsaved narrative cannot be submitted",
+    "Draft save persists typed narrative",
+    "Structured injury form saves through real API",
+    "Source mutation visibly makes draft stale",
+    "Refresh resolves reference without overwriting opinion",
+    "Warning acknowledgements and submission",
+    "Reviewer view does not allow narrative editing",
+    "Blocking reviewer comment prevents approval",
+    "Resolve, independent approval and immutable issue",
+    "Preserved issued PDF retrieved from application",
+    "390-pixel mobile layout has no document overflow",
+    "Desktop layout and JavaScript runtime checks"
+  ],
+  "javascript_errors": [],
+  "api_requests": 41,
+  "expected_negative_responses": [
+    {
+      "method": "GET",
+      "url": "/api/me",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "url": "/api/reports/856304a9-26ec-4e72-8c16-ec05f8557125/actions/approve",
+      "status": 409
+    }
+  ],
+  "not_tested": [
+    "TLS/reverse proxy",
+    "browser cookie transport",
+    "real browser CSP enforcement"
+  ]
+}
