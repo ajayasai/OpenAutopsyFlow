@@ -1,0 +1,31 @@
+{
+  "python": "3.13.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "cases": 1000,
+  "tasks": 3000,
+  "repeats": 30,
+  "fixture_seed_seconds": 0.356,
+  "database_bytes": 7618560,
+  "results": {
+    "/api/cases": {
+      "median_ms": 28.95,
+      "p95_ms": 64.71,
+      "min_ms": 27.41,
+      "max_ms": 70.14
+    },
+    "/api/cases?pending_only=true": {
+      "median_ms": 29.13,
+      "p95_ms": 35.4,
+      "min_ms": 27.15,
+      "max_ms": 37.91
+    },
+    "/api/cases?q=SYN-00000": {
+      "median_ms": 15.9,
+      "p95_ms": 19.29,
+      "min_ms": 14.61,
+      "max_ms": 20.3
+    }
+  },
+  "method": "Sequential in-process ASGI client, synthetic cases, no reports/photos, warm cache.",
+  "limitations": "Not production capacity, concurrency, network latency, or a head-to-head vendor comparison."
+}
