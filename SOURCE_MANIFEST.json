@@ -17,8 +17,8 @@
       "sha256": "efe35b04741cc513b7fecc935d603508aff876b23c82979b0a3300f299c3ea37"
     },
     ".github/workflows/ci.yml": {
-      "bytes": 981,
-      "sha256": "6ecc30133e3e5738a04f3d91f69b3c8e5f630182ec2048a8c94449a07e8394e6"
+      "bytes": 2353,
+      "sha256": "6ab74c292274e6d9483bc901f8af7f96de490eb8c194ceb7c7904bd280e13c69"
     },
     ".gitignore": {
       "bytes": 395,
@@ -29,8 +29,8 @@
       "sha256": "0084431b32262a1412756bdfac4947b1525a007cefd89f1364a2892b6a9c1dfe"
     },
     "CHANGELOG.md": {
-      "bytes": 782,
-      "sha256": "57923a6af979f6e8ac16c3ce20e614af98e110809c689bc54dcfac694c1dc3cf"
+      "bytes": 1950,
+      "sha256": "838795dea44f9dd9ec422f434e8f1e801b2229ab4143bfa0bb1ff7a8a5c6b4f1"
     },
     "CONTRIBUTING.md": {
       "bytes": 1695,
@@ -49,8 +49,8 @@
       "sha256": "86a188987fd9b5f5bcf000a3ac3e2b2ac3fa088bc7e49ff0e0dba98952d8a013"
     },
     "README.md": {
-      "bytes": 10802,
-      "sha256": "41c6ad7bf20d506a99d004f758c07775a11af2fa23f1c7f4f7f550359840c687"
+      "bytes": 12535,
+      "sha256": "b4e287636f12339af4b20c6deb0879ae8b8f86246c694c7cf0c27e7f84df25f0"
     },
     "SECURITY.md": {
       "bytes": 3437,
@@ -65,8 +65,12 @@
       "sha256": "44fdab8e413788543441b7f922cc3e905514659339bd80ed86887ad05bdd3a4a"
     },
     "docs/COMPARISON.md": {
-      "bytes": 3243,
-      "sha256": "ffc7756d69459c67b380df452d1ddd15769cb164fb7b7dd7b1ea907b188575be"
+      "bytes": 3522,
+      "sha256": "dc885fa88b8ad9521ed0afe8e5bc7c1a1208ed4b9e917ba31d882b35cefd80c5"
+    },
+    "docs/COMPETITIVE_VALIDATION.md": {
+      "bytes": 4397,
+      "sha256": "209615b51c5e26eebd1b0a50caeeb1d0652d223dff1b55f909bb77710b670e53"
     },
     "docs/DEPLOYMENT.md": {
       "bytes": 5424,
@@ -80,6 +84,10 @@
       "bytes": 2651,
       "sha256": "c95317af13e5c4df7c2254718b30cd773e19d5078f8d45eec9b65dbf6c5ed11c"
     },
+    "docs/REVIEW_WORKBENCH.md": {
+      "bytes": 6511,
+      "sha256": "dc1690997a73f38a1655078ffe4d5c8dee9489e3dee4b24b45250a191ee98435"
+    },
     "docs/ROADMAP.md": {
       "bytes": 2453,
       "sha256": "e16099c3b0b211a706337b31a63b81da68fa70cf45f9e984a94d559985cb113f"
@@ -91,6 +99,10 @@
     "docs/VALIDATION.md": {
       "bytes": 5067,
       "sha256": "a9baab8c68c9ac6845102879b063c0b24e68832db2da43d3eddd14d6f64f35b6"
+    },
+    "docs/VALIDATION_0_2.md": {
+      "bytes": 4752,
+      "sha256": "0c1c556568d55035f9eb42c0104503507622e8919581d0994038ea0382a86e64"
     },
     "docs/WORKFLOW.md": {
       "bytes": 3509,
@@ -108,21 +120,37 @@
       "bytes": 1764,
       "sha256": "5a846fc50ac17ab8668f579846bebeb945d93d4cd6a6b4887df34f16588f4881"
     },
+    "docs/validation-0.2.json": {
+      "bytes": 3980,
+      "sha256": "fcc69c2edddf1273ff0eddcf24b61509755ededebc5cc450001ee354dec12c8d"
+    },
     "openautopsyflow/__init__.py": {
       "bytes": 100,
-      "sha256": "08ccedb3cdd3011cece18cd23ab26e8d31f8db93951b9d2c830db3f6e590c16e"
+      "sha256": "21d3700559c1e13f1e89d607c9a552b8379eb7899e34ac8e9fee76a4decacb50"
     },
     "openautopsyflow/api.py": {
-      "bytes": 25283,
-      "sha256": "ecd829542bc1b92abddc4e7f36e0dd004aac310f74879ad0dbebdabff18a20af"
+      "bytes": 25380,
+      "sha256": "8ae01d09ef07ba9658369d6ad45c04ffcd77a4081309874ddce7fdde34a953d6"
     },
     "openautopsyflow/cli.py": {
-      "bytes": 14202,
-      "sha256": "81e2e7bb296a0ccf9ba478b46488e6374a92423399a0d3ab7e05dc436def4f84"
+      "bytes": 14215,
+      "sha256": "89f5ca966ca5544da33f0a2d4261faa1345252f3cf66617a6ccff3e80c0b274e"
     },
     "openautopsyflow/documents.py": {
       "bytes": 7709,
       "sha256": "beded530f44ca2fbc74d450fe0f85a0b32b05a7d2cb4e7a0872bfdc0f68d9125"
+    },
+    "openautopsyflow/migrations.py": {
+      "bytes": 5687,
+      "sha256": "a91baae85f88a36b7f94963926ee944bbbbcdeddc6ff8485405f057cf646ba70"
+    },
+    "openautopsyflow/review.py": {
+      "bytes": 16193,
+      "sha256": "fda31007cfbb4bc5db42c803cd378c0f28d218aa1c457b8197a678d03594cfe1"
+    },
+    "openautopsyflow/review_api.py": {
+      "bytes": 6460,
+      "sha256": "2b1175fa53785fd2c3de3b8d4a3d84d325eaa61c5e61645d4e37256f37a9d321"
     },
     "openautopsyflow/rules.py": {
       "bytes": 3602,
@@ -141,8 +169,8 @@
       "sha256": "6ddd185f507d09c2de98be5602a8ceae24bdd6d65d1816c39167c329ff15d9cb"
     },
     "openautopsyflow/service.py": {
-      "bytes": 26358,
-      "sha256": "f0e148904f6e76c8e57ca4c53f6886930201a043c6d33f0b018dcb8f967f4c74"
+      "bytes": 27214,
+      "sha256": "421feaa5fd848f2a3cb1b1fe429f1fed927dc9ec50d4d271ac4cfddce7b87224"
     },
     "openautopsyflow/static/app.css": {
       "bytes": 12861,
@@ -153,16 +181,28 @@
       "sha256": "0bafd73a956c51403a7b81e9c8e14bd855cde2238e263b24e63db8e31efd22d6"
     },
     "openautopsyflow/static/index.html": {
-      "bytes": 632,
-      "sha256": "de671c9c258686eab6ac997662d33e235456c428a65162c46ff69af48a01bed6"
+      "bytes": 804,
+      "sha256": "532f2cd4bf22516ae99a2bc81412a9add46f3c656126f1d510d71f114ccdd67e"
+    },
+    "openautopsyflow/static/workbench.css": {
+      "bytes": 4787,
+      "sha256": "fa19c52c25082daf54dec5d82a84bf098ed70c1beb296a7ed28a2116e5dede3a"
+    },
+    "openautopsyflow/static/workbench.html": {
+      "bytes": 1310,
+      "sha256": "6ff76378887c92895be20cc8e6ea2bb77b415081fa555d13c3a52c3e2fa597da"
+    },
+    "openautopsyflow/static/workbench.js": {
+      "bytes": 16485,
+      "sha256": "be2f92417db0e5509e761d8c0a3aca0d9c0c34555f2321f970011c3fb4df8cdd"
     },
     "openautopsyflow/store.py": {
-      "bytes": 7317,
-      "sha256": "51fee8a2fd33e44630da88d764bed5006b244252557b97572526c257e448956b"
+      "bytes": 6877,
+      "sha256": "e45f550c307b966f9f69cb59a46055a9be973816715ddb8b8d2c0ac9eaff89a6"
     },
     "pyproject.toml": {
       "bytes": 1050,
-      "sha256": "9e0c9acebd8bf665dc65a30b55fad11c62a68122a34b42f4ff4fcccbc4b10abd"
+      "sha256": "dc9ec60dfeb1eb52848a12a9b420255f65cadc810806daaac231b8f0d587642d"
     },
     "requirements-dev.lock": {
       "bytes": 228,
@@ -177,20 +217,24 @@
       "sha256": "0095d5df9027d94bbfb8e8af75d3bbfccfc6db12d7dbb4285cfc00478052ea29"
     },
     "scripts/browser_smoke.py": {
-      "bytes": 10961,
-      "sha256": "91a481e44304bb2532b1e5dcd5bf5bd3c1012829c15e943d94533d5fda5d9314"
+      "bytes": 12185,
+      "sha256": "12524f530a8cd30701664e42a1af3838f762f5b24f8574bdc676423d5c37beb4"
     },
     "scripts/publish_github.py": {
       "bytes": 7084,
       "sha256": "3067ece4f0e949167ec3fa8d51ca3d4db1b1d55c28cbd2bb13637651b560a05b"
     },
     "scripts/release_manifest.py": {
-      "bytes": 1596,
-      "sha256": "380ac522437837ff600e71d44db680207728897968ba390393b959499cb04d33"
+      "bytes": 1676,
+      "sha256": "eac3a00b651d137dcc2cf8de5649c8678f640c54e289e03aeac1aa43a337229b"
     },
     "scripts/run_demo.py": {
       "bytes": 1315,
       "sha256": "742f5e81c4cd35cb4abd7947556cbbb471c17d1f717e1d2ebe7dcc67fd6c1514"
+    },
+    "scripts/workbench_smoke.py": {
+      "bytes": 15397,
+      "sha256": "a4a9ccd7dcd19f4f04f23dbcd7b69e04424d4db6dd212e909171e66c4d6ac81c"
     },
     "tests/conftest.py": {
       "bytes": 4932,
@@ -208,6 +252,10 @@
       "bytes": 2453,
       "sha256": "b93fe1b9ae80e70f62ba0cc695080af8374f55bdec7f88d5449054e05d9aadc8"
     },
+    "tests/test_review_workbench.py": {
+      "bytes": 22462,
+      "sha256": "dd22b540baa1948b4247fc9ca15ebcb7893ad5772131f9aa578c77bf8c61a1e7"
+    },
     "tests/test_security.py": {
       "bytes": 8524,
       "sha256": "74aa3c00ccaf1a5eb68611ae0655909331062bba15cca1917bb380a7d772ea2a"
@@ -218,5 +266,5 @@
     }
   },
   "format": "openautopsyflow-source-v1",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

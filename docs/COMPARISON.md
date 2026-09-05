@@ -29,3 +29,8 @@ Separate single-node performance from multi-user concurrency and high-availabili
 [2] [Forensic Filer Online](https://www.forensicfiler.com/forensic-filer-online.aspx), accessed 5 September 2026.
 
 [3] [Petersen et al., FATAL (2024)](https://pubmed.ncbi.nlm.nih.gov/39303395/), DOI 10.1016/j.compbiomed.2024.109170.
+
+
+## Version 0.2 update
+
+See [the updated competitor evidence and reproducible evaluation protocol](COMPETITIVE_VALIDATION.md). New review/provenance capabilities are documented in [the review workbench guide](REVIEW_WORKBENCH.md); they are not proven exclusive to this project.

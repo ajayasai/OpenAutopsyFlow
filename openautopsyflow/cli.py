@@ -61,7 +61,7 @@ def restore_database(settings: Settings, source: Path):
         try:
             if db.execute('PRAGMA integrity_check').fetchone()[0]!='ok':
                 raise ValueError('SQLite integrity check failed')
-            if db.execute("SELECT value FROM meta WHERE key='schema_version'").fetchone()[0]!='1':
+            if db.execute("SELECT value FROM meta WHERE key='schema_version'").fetchone()[0] not in ('1', '2'):
                 raise ValueError('Unsupported backup schema')
             for row in db.execute('SELECT DISTINCT scope FROM audit'):
                 if not verify_audit(audit_events(db,row[0])):

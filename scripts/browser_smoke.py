@@ -151,10 +151,25 @@ def run(output: Path, chromium: str | None = None):
             checks.append('Blocking reviewer comment prevents approval')
             click('resolve-comment')
             page.wait_for_function('state.report.comments.every(c=>c.resolved_at)')
+            # Backend integration coverage for the mandatory v0.2 review receipts.
+            # The dedicated workbench harness separately tests the visible forms.
+            current_user = client.get('/api/me').json()
+            client.headers['X-CSRF-Token'] = current_user['csrf']
+            workbench = client.get(f'/api/reports/{report_id}/workbench').json()
+            for original in workbench['review']['required']:
+                assert client.get(f'/api/reports/{report_id}/review-evidence/{original["id"]}').status_code == 200
+                receipt = client.post(f'/api/reports/{report_id}/review-receipts', json={
+                    'version': workbench['report']['version'], 'evidence_id': original['id'],
+                    'evidence_sha256': original['sha256'], 'basis_digest': workbench['review']['basis_digest'],
+                    'statement': 'Synthetic harness attestation after opening this exact original.',
+                    'acknowledged': True})
+                assert receipt.status_code == 201, receipt.text
+            checks.append('Required original reviews recorded through authenticated API')
             click('report-approve')
             page.wait_for_function('state.report.status === "approved"')
             click('report-issue')
             page.wait_for_function('state.report.status === "issued"')
+            page.wait_for_selector('[data-action="report-return"]', state='detached')
             assert not page.locator('[data-action="report-return"]').count()
             checks.append('Resolve, independent approval and immutable issue')
             response = client.get('/api/reports/' + report_id + '/pdf')
