@@ -1,0 +1,23 @@
+# SYNTHETIC DEMONSTRATION ONLY. Do not use this configuration for real case data.
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      OAF_DEMO: "1"
+      OAF_DATA_DIR: /var/lib/openautopsyflow
+      OAF_HOSTS: localhost,127.0.0.1
+      OAF_ORIGINS: http://127.0.0.1:8000,http://localhost:8000
+    volumes:
+      - demo-data:/var/lib/openautopsyflow
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=134217728
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+volumes:
+  demo-data:
